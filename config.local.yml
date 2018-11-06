@@ -1,0 +1,18 @@
+app:
+    port: "5000"
+    read_timeout: 30
+    request_timeout: 3
+    sentry: https://2acfbba0a85a48f0a1d5c0c84e73e0db:a5d8dda8ca7b47a2b335c2a9fe285657@sentry.io/1313777
+
+redis:
+    host: localhost
+    port: 6379
+    db: 0
+    prefix: reader
+
+db:
+    host: localhost
+    port: 5431
+    name: postgres
+    username: postgres
+    password: "12345"

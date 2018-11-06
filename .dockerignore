@@ -1,0 +1,10 @@
+.DS_Store
+.git
+.gitignore
+.idea/
+.vscode/
+dist/
+docker-compose.yml
+Dockerfile
+k8s
+Makefile

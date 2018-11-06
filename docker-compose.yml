@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  web:
+    container_name: reader_api
+    restart: always
+    build: .
+    environment:
+      - CONSUL_URL=consul:8500
+      - CONSUL_PATH=goplate
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+      - redis
+      - consul
+
+  db:
+    container_name: reader_db
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=postgres
+    ports:
+      - 5431:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    container_name: reader_redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
+
+  consul:
+    container_name: reader_consul
+    image: consul:latest
+    ports:
+      - 8500:8500
+
+volumes:
+  pgdata:
